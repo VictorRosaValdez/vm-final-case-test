@@ -7,7 +7,7 @@ namespace DOTNET_Final_Case_BackEnd.Models
         // Properties
         public int ChatId { get; set; }
 
-        // Navegation property
+        // Navigation property
         public int ProjectId { get; set; }
     }
 }
