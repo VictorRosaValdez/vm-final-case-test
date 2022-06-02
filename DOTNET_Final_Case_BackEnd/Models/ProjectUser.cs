@@ -7,7 +7,7 @@
 
         // Navigation property Project
         public  Project Project { get; set; }
-        public int UsertId { get; set; }
+        public int UserId { get; set; }
 
         // Navigation property User
         public User User { get; set; }

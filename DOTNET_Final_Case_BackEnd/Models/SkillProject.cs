@@ -8,7 +8,7 @@
         // Navigation property Project
         public Project Project { get; set; }
 
-        public string SkillId { get; set; }
+        public int SkillId { get; set; }
 
         // Navigation property Skill
         public Skill Skill { get; set; }

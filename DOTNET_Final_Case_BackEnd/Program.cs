@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Csharp_WebAPI_Assignment3",
+        Title = "DotnetFinalCase",
         Version = "v1",
         Description = "Movie Application",
         TermsOfService = new Uri("Https://example.com/terms"),
@@ -36,7 +36,7 @@ builder.Services.AddSwaggerGen(c =>
     //c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
-//connectionstring
+//connectionstring from appsetting.json.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ProjectsDbContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddAutoMapper(typeof(Program));
