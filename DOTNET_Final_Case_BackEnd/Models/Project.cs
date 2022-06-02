@@ -9,20 +9,22 @@ namespace DOTNET_Final_Case_BackEnd.Models
         public int ProjectId { get; set; }
         [MaxLength(60)] public string Title { get; set; }
 
-        [MaxLength(500)] public string Description { get; set; }
+        [MaxLength(500)] public string? Description { get; set; }
 
-        [MaxLength(60)] public string Theme { get; set; }
+        [MaxLength(60)] public string? Theme { get; set; }
 
-        [MaxLength(60)] public string Industry { get; set; }
+        [MaxLength(60)] public string? Industry { get; set; }
 
-        [MaxLength(500)] public string Link { get; set; }
+        [MaxLength(500)] public string? Link { get; set; }
 
-        [MaxLength(500)] public string Screen { get; set; }
+        [MaxLength(500)] public string? Screen { get; set; }
 
-        [MaxLength(500)] public string Photo { get; set; }
+        [MaxLength(500)] public string? Photo { get; set; }
 
-        [MaxLength(60)] public string Progress { get; set; }
+        [MaxLength(60)] public string? Progress { get; set; }
 
+        // Navigation Property
+        public ICollection<Message> Message { get; set; }
 
     }
 }

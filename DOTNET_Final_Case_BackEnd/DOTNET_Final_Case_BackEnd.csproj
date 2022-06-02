@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Dal\Repositories\" />
     <Folder Include="DTOs\ProjectDTOs\" />
     <Folder Include="DTOs\UserDTOs\" />
   </ItemGroup>
