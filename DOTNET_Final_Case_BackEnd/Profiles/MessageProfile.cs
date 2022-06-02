@@ -1,25 +1,30 @@
 ﻿using AutoMapper;
-using DOTNET_Final_Case_BackEnd.DTOs.ProjectDTO;
+using DOTNET_Final_Case_BackEnd.DTOs.MessageDTO;
 using DOTNET_Final_Case_BackEnd.Models;
+
 
 namespace DOTNET_Final_Case_BackEnd.Profiles
 {
-    public class ProjectProfile : Profile
+    public class MessageProfile : Profile
     {
-        public ProjectProfile()
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public MessageProfile() 
         {
 
             // Mapping from the domain object to the readDTO object.
-            CreateMap<Project, ProjectReadDTO>();
+            CreateMap<Message, MessageReadDTO>();
 
             // Mapping from the createDTO object to the domain object. ReverseMap is for navigating both ways.
-            CreateMap<ProjectCreateDTO, Project>().ReverseMap();
+            CreateMap<MessageCreateDTO, Message>().ReverseMap();
 
             // Mapping from the createDTO object to the domain object. ReverseMap is for navigating both ways.
-            CreateMap<ProjectUpdateDTO, Project>().ReverseMap();
+            CreateMap<MessageUpdateDTO, Message>().ReverseMap();
 
             // Mapping from the domain object to the deleteDTO object.
-            CreateMap<Project, ProjectDeleteDTO>();
+            CreateMap<Message, MessageDeleteDTO>();
 
         }
 
