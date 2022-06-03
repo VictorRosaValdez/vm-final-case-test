@@ -14,14 +14,16 @@
                  ProjectId = 1,
                  Title = "The world of .NET",
                  Description = ".NET is an open source platform",
-                 Theme = "IT"
+                 Theme = "IT",
+                 Industry = "Programming"
+                 
                 },
                 new Project(){
                 ProjectId = 2,
                  Title = "Java",
                  Description = "Java is an open source programming language",
-                 Theme = "IT"
-
+                 Theme = "IT",
+                 Industry = "Programming"
 
                 },
 
@@ -29,8 +31,8 @@
                 ProjectId = 3,
                 Title = "C#",
                 Description = "C# an open source programming language",
-                Theme = "IT"
-                
+                Theme = "IT",
+                Industry = "Programming"
 
 
                 }
@@ -261,6 +263,7 @@
                 ProjectId = 1,
                 UserId = 4,
                 Description = "Well Done!"
+                
 
                 }
 

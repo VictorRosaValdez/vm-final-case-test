@@ -6,7 +6,7 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
     public interface ISkillRepository
     {
         /// <summary>
-        /// Abstract method for get all skills.
+        /// Abstract method to get all skills.
         /// </summary>
         /// <returns>A list of skillDto.</returns>
         Task<ActionResult<IEnumerable<SkillReadDTO>>> GetSkillsAsync();
@@ -21,7 +21,7 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
 
 
         /// <summary>
-        /// Abstract method for create a skill.
+        /// Abstract method to create a skill.
         /// </summary>
         /// <param name="skillDto">SkillDto object.</param>
         /// <returns>The new skillDto object</returns>

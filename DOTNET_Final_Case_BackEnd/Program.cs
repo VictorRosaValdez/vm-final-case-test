@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Reflection;
 using System.IO;
 using DOTNET_Final_Case_BackEnd.Models;
+using DOTNET_Final_Case_BackEnd.Dal.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,20 @@ builder.Services.AddDbContext<ProjectsDbContext>(x => x.UseSqlServer(connectionS
 
 // Injection of AutoMapper.
 builder.Services.AddAutoMapper(typeof(Program));
+
+// Injection of MessageRepository
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+
+// Injection of IProjectRepository
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+
+// Injection of ISkillRepository
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+
+// Injection of UserRepository
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
 
 var app = builder.Build();
 

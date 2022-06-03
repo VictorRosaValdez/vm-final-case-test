@@ -1,4 +1,4 @@
-﻿using DOTNET_Final_Case_BackEnd.DTOs.ProjectDTO;
+﻿using DOTNET_Final_Case_BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DOTNET_Final_Case_BackEnd.Interfaces
@@ -6,40 +6,40 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
     public interface IProjectRepository
     {
         /// <summary>
-        /// Abstract method for get all projects.
+        /// Abstract method to get all projects.
         /// </summary>
-        /// <returns>A list of projectDto.</returns>
-        Task<ActionResult<IEnumerable<ProjectReadDTO>>> GetProjectsAsync();
+        /// <returns>A list of projects.</returns>
+        Task<ActionResult<IEnumerable<Project>>> GetProjectsAsync();
 
         /// <summary>
-        /// Abstract method for get a project by Id.
+        /// Abstract method to get a project by Id.
         /// </summary>
         /// <param name="id">The id of the project.</param>
-        /// <returns>The projectDto object.</returns>
-        Task<ActionResult<ProjectReadDTO>> GetProjectAsync(int id);
+        /// <returns>The project object.</returns>
+        Task<ActionResult<Project>> GetProjectAsync(int id);
 
 
 
         /// <summary>
-        /// Abstract method for create a project.
+        /// Abstract method to create a project.
         /// </summary>
-        /// <param name="projectDto">projectDto object.</param>
-        /// <returns>The new projectDto object</returns>
-        Task<ActionResult<ProjectReadDTO>> PostProjectAsync(ProjectCreateDTO projectDto);
+        /// <param name="domainProject">Project type.</param>
+        /// <returns>The new projec object</returns>
+        Task<ActionResult<Project>> PostProjectAsync(Project domainProject);
 
         /// <summary>
         /// Abstract method to update a project.
         /// </summary>
         /// <param name="id">The id of the project</param>
-        /// <param name="projectDto">ProjectDto object</param>
-        /// <returns>ProjectDto object.</returns>
-        Task<ActionResult<ProjectUpdateDTO>> PutProjectAsync(int id, ProjectUpdateDTO projectDto);
+        /// <param name="domainProject">Project type.</param>
+        /// <returns>Project object.</returns>
+        Task<ActionResult<Project>> PutProjectAsync(int id, Project domainProject);
 
         /// <summary>
         /// Abstract method to delete a project.
         /// </summary>
         /// <param name="id">The id of the project</param>
         /// <returns></returns>
-        Task<ActionResult<ProjectDeleteDTO>> DeleteProjectAsync(int id);
+        Task<ActionResult<Project>> DeleteProjectAsync(int id);
     }
 }
