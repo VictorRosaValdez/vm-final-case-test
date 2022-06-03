@@ -249,7 +249,6 @@
 
                 },
 
-
                 new Message(){
                 MessageId= 3,
                 ProjectId = 2,
@@ -263,10 +262,7 @@
                 UserId = 4,
                 Description = "Well Done!"
                 
-
                 }
-
-
 
             };
             return message;
