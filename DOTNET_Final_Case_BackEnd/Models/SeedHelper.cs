@@ -16,7 +16,7 @@
                  Description = ".NET is an open source platform",
                  Theme = "IT",
                  Industry = "Programming"
-                 
+
                 },
                 new Project(){
                 ProjectId = 2,
@@ -33,7 +33,6 @@
                 Description = "C# an open source programming language",
                 Theme = "IT",
                 Industry = "Programming"
-
 
                 }
 

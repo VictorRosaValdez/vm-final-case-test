@@ -39,10 +39,10 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserReadDTO>>> GetUsers()
         {
-            // Instance of the domainProject objects.
+            // Instance of the domainUser objects.
             var domainUsers = await _user.GetUsersAsync();
 
-            // Map domainProject with ProjectReadDTO
+            // Map domainProject with UserReadDTO
             var dtoUser = _mapper.Map<List<UserReadDTO>>(domainUsers.Value);
 
             return dtoUser;
