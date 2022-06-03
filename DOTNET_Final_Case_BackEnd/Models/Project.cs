@@ -13,7 +13,7 @@ namespace DOTNET_Final_Case_BackEnd.Models
 
         [MaxLength(60)] public string? Theme { get; set; }
 
-        [MaxLength(60)] public string? Industry { get; set; }
+        [MaxLength(60)] public string Industry { get; set; }
 
         [MaxLength(500)] public string? Link { get; set; }
 

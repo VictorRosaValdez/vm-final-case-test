@@ -46,10 +46,6 @@ builder.Services.AddDbContext<ProjectsDbContext>(x => x.UseSqlServer(connectionS
 // Injection of AutoMapper.
 builder.Services.AddAutoMapper(typeof(Program));
 
-
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

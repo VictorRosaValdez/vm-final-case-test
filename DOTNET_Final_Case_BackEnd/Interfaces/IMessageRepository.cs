@@ -6,13 +6,13 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
     public interface IMessageRepository
     {
         /// <summary>
-        /// Abstract method for get all messages.
+        /// Abstract method to get all messages.
         /// </summary>
         /// <returns>A list of messageDto.</returns>
         Task<ActionResult<IEnumerable<MessageReadDTO>>> GetMessagesAsync();
 
         /// <summary>
-        /// Abstract method for get a message by Id.
+        /// Abstract method to get a message by Id.
         /// </summary>
         /// <param name="id">The id of the message.</param>
         /// <returns>The messageDto object.</returns>
@@ -21,7 +21,7 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
 
 
         /// <summary>
-        /// Abstract method for create a message.
+        /// Abstract method to create a message.
         /// </summary>
         /// <param name="messageDto">MessageDto object.</param>
         /// <returns>The new messageDto object</returns>
