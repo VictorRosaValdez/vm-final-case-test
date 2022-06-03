@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using DOTNET_Final_Case_BackEnd.Interfaces;
 using Microsoft.OpenApi.Models;
 using System.Configuration;
 using System.Reflection;
@@ -38,7 +39,11 @@ builder.Services.AddSwaggerGen(c =>
 
 //connectionstring from appsetting.json.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Injection of the DbContext.
 builder.Services.AddDbContext<ProjectsDbContext>(x => x.UseSqlServer(connectionString));
+
+// Injection of AutoMapper.
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();

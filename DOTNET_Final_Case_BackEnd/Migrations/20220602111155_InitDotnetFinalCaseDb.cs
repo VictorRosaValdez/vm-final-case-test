@@ -17,7 +17,7 @@ namespace DOTNET_Final_Case_BackEnd.Migrations
                     Title = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Theme = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
-                    Industry = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
+                    Industry = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Link = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Screen = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Photo = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
