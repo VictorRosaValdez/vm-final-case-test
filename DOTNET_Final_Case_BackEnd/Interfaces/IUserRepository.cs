@@ -1,4 +1,5 @@
-﻿using DOTNET_Final_Case_BackEnd.Models;
+﻿using DOTNET_Final_Case_BackEnd.DTOs.UserDTO;
+using DOTNET_Final_Case_BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DOTNET_Final_Case_BackEnd.Interfaces
@@ -23,17 +24,17 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
         /// <summary>
         /// Abstract method to create a user.
         /// </summary>
-        /// <param name="domainUser">User type.</param>
+        /// <param name="user">User type.</param>
         /// <returns>The new user object</returns>
-        Task<ActionResult<User>> PostUserAsync(User domainuser);
+        Task<ActionResult<User>> PostUserAsync(User user);
 
         /// <summary>
         /// Abstract method to update a user.
         /// </summary>
         /// <param name="id">The id of the user</param>
-        /// <param name="domainUser">User type</param>
+        /// <param name="userDto">User type</param>
         /// <returns>UserDto object.</returns>
-        Task<ActionResult<User>> PutUserAsync(int id, User domainUser);
+        Task<ActionResult<User>> PutUserAsync(int id, UserUpdateDTO userDto);
 
         /// <summary>
         /// Abstract method to delete a user.
