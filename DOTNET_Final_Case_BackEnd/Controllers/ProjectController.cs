@@ -151,5 +151,28 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             return (_context.Project?.Any(e => e.ProjectId == id)).GetValueOrDefault();
         }
 
+        /// <summary>
+        /// Delete a project by Id.
+        /// </summary>
+        /// <param name="id">Id of the projectDto object.</param>
+        /// <returns></returns>
+        /// <response code="204">Succesfully deleted the project.</response>
+        /// <response code="404">Error: The project you are looking for is not found.</response>
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpDelete]
+        public async Task<ActionResult> DeleteProjectAsync(int id)
+        {
+            // Instance of the domainUser objects.
+            var domainProject = await _project.DeleteProjectAsync(id);
+
+            if (domainProject == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
     }
 }

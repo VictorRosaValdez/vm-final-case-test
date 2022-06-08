@@ -53,9 +53,25 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task<ActionResult<Project>> DeleteProjectAsync(int id)
+        /// <summary>
+        /// Deletes a project from the database.
+        /// </summary>
+        /// <param name="id">Id of the project object.</param>
+        /// <returns>The deleted object.</returns>
+        public async Task<ActionResult<Project>> DeleteProjectAsync(int id)
         {
-            throw new NotImplementedException();
+            // Find project by id
+            var domainProject = await _context.Project.FindAsync(id);
+
+            if (domainProject == null)
+            {
+                return domainProject;
+            }
+
+            _context.Project.Remove(domainProject);
+            await _context.SaveChangesAsync();
+
+            return domainProject;
         }
     }
 }
