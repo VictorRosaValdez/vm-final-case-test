@@ -8,8 +8,8 @@ namespace DOTNET_Final_Case_BackEnd.Models
         public int UserId { get; set; }
         public bool Hidden { get; set; }
         [MaxLength(60)] public string Name { get; set; }
-        [MaxLength(100)] public string Email { get; set; }
-        [MaxLength(60)] public string Password { get; set; }
+        [MaxLength(100)] public string? Email { get; set; }
+        [MaxLength(60)] public string? Password { get; set; }
 
         [MaxLength(500)] public string? Portfolio { get; set; }
 

@@ -13,9 +13,9 @@ namespace DOTNET_Final_Case_BackEnd.Migrations
                 columns: new[] { "ProjectId", "Description", "Industry", "Link", "Photo", "Progress", "Screen", "Theme", "Title" },
                 values: new object[,]
                 {
-                    { 1, ".NET is an open source platform", null, null, null, null, null, "IT", "The world of .NET" },
-                    { 2, "Java is an open source programming language", null, null, null, null, null, "IT", "Java" },
-                    { 3, "C# an open source programming language", null, null, null, null, null, "IT", "C#" }
+                    { 1, ".NET is an open source platform", "Programming", null, null, null, null, "IT", "The world of .NET" },
+                    { 2, "Java is an open source programming language", "Programming", null, null, null, null, "IT", "Java" },
+                    { 3, "C# an open source programming language", "Programming", null, null, null, null, "IT", "C#" }
                 });
 
             migrationBuilder.InsertData(
