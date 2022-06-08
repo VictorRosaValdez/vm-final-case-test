@@ -27,13 +27,13 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
         /// <returns>The new projec object</returns>
         Task<ActionResult<Project>> PostProjectAsync(Project domainProject);
 
-        /// <summary>
-        /// Abstract method to update a project.
-        /// </summary>
-        /// <param name="id">The id of the project</param>
-        /// <param name="domainProject">Project type.</param>
-        /// <returns>Project object.</returns>
-        Task<ActionResult<Project>> PutProjectAsync(int id, Project domainProject);
+        ///// <summary>
+        ///// Abstract method to update a project.
+        ///// </summary>
+        ///// <param name="id">The id of the project</param>
+        ///// <param name="domainProject">Project type.</param>
+        ///// <returns>Project object.</returns>
+        //Task<ActionResult<Project>> PutProjectAsync(int id, Project domainProject);
 
         /// <summary>
         /// Abstract method to delete a project.

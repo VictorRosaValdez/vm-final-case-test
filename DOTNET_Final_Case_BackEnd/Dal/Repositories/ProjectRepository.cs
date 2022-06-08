@@ -23,7 +23,6 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
         }
 
-
         /// <summary>
         /// Get all projects.
         /// </summary>
@@ -36,22 +35,42 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainProjects;
         }
 
-        public Task<ActionResult<Project>> GetProjectAsync(int id)
+        public async Task<ActionResult<Project>> GetProjectAsync(int id)
         {
-            throw new NotImplementedException();
-        }
+            // Assign it to the domain object.
+            var domainProject = await _context.Project.FindAsync(id);
 
-       
+            return domainProject;
+        }
 
         public Task<ActionResult<Project>> PostProjectAsync(Project domainProject)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult<Project>> PutProjectAsync(int id, Project domainProject)
-        {
-            throw new NotImplementedException();
-        }
+        //public async Task<ActionResult<Project>> PutProjectAsync(int id)
+        //{
+        //    // Find domain object by id
+        //    var domainProject = await _context.Project.FindAsync(id);
+
+        //    // Check if the domainProject is null.
+        //    if (domainProject == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    //// Update fields.
+        //    //domainProject.Title = projectDto.Title;
+        //    //domainProject.Description = projectDto.Description;
+        //    //domainProject.Theme = projectDto.Theme;
+        //    //domainProject.Industry = projectDto.Industry;
+        //    //domainProject.Link = projectDto.Link;
+        //    //domainProject.Screen = projectDto.Screen;
+        //    //domainProject.Photo = projectDto.Photo;
+        //    //domainProject.Progress = projectDto.Progress;
+
+        //    return domainProject;
+        //}
 
         public Task<ActionResult<Project>> DeleteProjectAsync(int id)
         {
