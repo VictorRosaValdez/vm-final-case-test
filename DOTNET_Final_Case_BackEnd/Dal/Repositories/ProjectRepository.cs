@@ -35,6 +35,11 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainProjects;
         }
 
+        /// <summary>
+        /// Get a project by id.
+        /// </summary>
+        /// <param name="id">An integer representing the id of the project.</param>
+        /// <returns>A project domain object.</returns>
         public async Task<ActionResult<Project>> GetProjectAsync(int id)
         {
             // Assign it to the domain object.
