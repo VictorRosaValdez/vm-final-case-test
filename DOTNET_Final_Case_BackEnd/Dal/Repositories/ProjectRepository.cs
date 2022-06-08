@@ -43,34 +43,15 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainProject;
         }
 
-        public Task<ActionResult<Project>> PostProjectAsync(Project domainProject)
+        /// <summary>
+        /// Adds a new project domain object to the database.
+        /// </summary>
+        /// <param name="domainProject">Project object.</param>
+        public async Task PostProjectAsync(Project domainProject)
         {
-            throw new NotImplementedException();
+            _context.Project.Add(domainProject);
+            await _context.SaveChangesAsync();
         }
-
-        //public async Task<ActionResult<Project>> PutProjectAsync(int id)
-        //{
-        //    // Find domain object by id
-        //    var domainProject = await _context.Project.FindAsync(id);
-
-        //    // Check if the domainProject is null.
-        //    if (domainProject == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    //// Update fields.
-        //    //domainProject.Title = projectDto.Title;
-        //    //domainProject.Description = projectDto.Description;
-        //    //domainProject.Theme = projectDto.Theme;
-        //    //domainProject.Industry = projectDto.Industry;
-        //    //domainProject.Link = projectDto.Link;
-        //    //domainProject.Screen = projectDto.Screen;
-        //    //domainProject.Photo = projectDto.Photo;
-        //    //domainProject.Progress = projectDto.Progress;
-
-        //    return domainProject;
-        //}
 
         public Task<ActionResult<Project>> DeleteProjectAsync(int id)
         {

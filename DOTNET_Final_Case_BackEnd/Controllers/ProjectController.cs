@@ -98,7 +98,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
                 return BadRequest();
             }
 
-            // Map projectDTO object to domain object
+            // Map ProjectUpdateDTO to domain object
             Project domainProject = _mapper.Map<Project>(projectDto);
             _context.Entry(domainProject).State = EntityState.Modified;
 
@@ -122,6 +122,29 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             return NoContent();
         }
 
+        // POST: api/projects
+        /// <summary>
+        /// Creates a new project object.
+        /// </summary>
+        /// <param name="projectDto">A Project Create DTO object.</param>
+        /// <returns>A Project Read DTO object.</returns>
+        /// <response code="201">Succesfully created object.</response>
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [HttpPost]
+        public async Task<ActionResult<ProjectCreateDTO>> PostUser(ProjectCreateDTO projectDto)
+        {
+            // Map ProjectCreateDTO to domain object
+            Project domainProject = _mapper.Map<Project>(projectDto);
+
+            // Add domain object to database and save changes
+            await _project.PostProjectAsync(domainProject);
+
+            // Map domain object to ProjectReadDTO
+            ProjectReadDTO newProjectDto = _mapper.Map<ProjectReadDTO>(domainProject);
+
+            // Return the new project
+            return CreatedAtAction("GetProject", new { id = newProjectDto.ProjectId }, newProjectDto);
+        }
 
         private bool ProjectExists(int id)
         {
