@@ -33,7 +33,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
         /// <summary>
         /// Get all users.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of user objects.</returns>
         public async Task<ActionResult<IEnumerable<User>>> GetUsersAsync()
         {
                 // Assign it to the domain object.
@@ -43,6 +43,11 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             
         }
 
+        /// <summary>
+        /// Get a user by ID.
+        /// </summary>
+        /// <param name="id">Id of the user</param>
+        /// <returns>An user object.</returns>
         public async Task<ActionResult<User>> GetUserAsync(int id)
         {
             // Assign it to the domain object.
@@ -51,11 +56,24 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainUser;
         }
 
+        /// <summary>
+        /// Update an user object.
+        /// </summary>
+        /// <param name="id">Id of the user.</param>
+        /// <param name="userDto">UserUpdateDTO object.</param>
+        /// <returns>An user object.</returns>
         public async Task<ActionResult<User>> PutUserAsync(int id, UserUpdateDTO userDto)
         {
             // Find the Id.
             var domainUser = _context.User.Find(id);
 
+            // Check if the domainUser is null.
+            if (domainUser == null)
+            {
+                return domainUser;
+            }
+
+            // Update fields.
             domainUser.Name = userDto.Name;
             domainUser.Email = userDto.Email;
             domainUser.Portfolio = userDto.Portfolio;
@@ -66,6 +84,12 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             return domainUser;
         }
+
+        /// <summary>
+        /// Create a new user object.
+        /// </summary>
+        /// <param name="user">User object.</param>
+        /// <returns>The new user object.</returns>
         public async Task<ActionResult<User>> PostUserAsync(User user)
         {
             _context.User.Add(user);
@@ -75,10 +99,20 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
         }
 
+        /// <summary>
+        /// Delete an user object.
+        /// </summary>
+        /// <param name="id">Id of the user object.</param>
+        /// <returns>The deleted object.</returns>
         public async Task<ActionResult<User>> DeleteUserAsync(int id)
         {
             // Find the Id.
             var domainUser = await _context.User.FindAsync(id);
+
+            if (domainUser == null)
+            {
+                return domainUser;
+            }
 
             _context.User.Remove(domainUser);
             await _context.SaveChangesAsync();
@@ -86,6 +120,11 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainUser;
         }
 
+        /// <summary>
+        /// Check of an user exists.
+        /// </summary>
+        /// <param name="id">Id of the user.</param>
+        /// <returns></returns>
         public bool UserExists(int id)
         {
             return _context.User.Any(e => e.UserId == id);

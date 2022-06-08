@@ -36,7 +36,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         /// <summary>
         /// Get all users.
         /// </summary>
-        /// <response code="200">Succesfully returns a user object.</response>
+        /// <response code="200">Succesfully returns a list of user object.</response>
         /// <returns>A list of user objects.</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
@@ -88,8 +88,11 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         /// <param name="id">Id of the user</param>
         /// <param name="userDto">UserDto</param>
         /// <returns></returns>
+        /// <response code="204">Succesfully object updated.</response>
+        /// <response code="404">Error: The object you are looking for is not found.</response>
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
         public async Task<ActionResult<UserUpdateDTO>> PutUser(int id, UserUpdateDTO userDto)
         {
@@ -102,14 +105,6 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
 
             // Map domainProject with UserReadDTO
             var dtoUser = _mapper.Map<UserUpdateDTO>(domainUser.Value);
-
-
-            if (id != dtoUser.UserId)
-            {
-                return BadRequest();
-            }
-
-           // _context.Entry(character).State = EntityState.Modified;
 
             try
             {
@@ -161,14 +156,23 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         /// </summary>
         /// <param name="id">Id of the userDto object.</param>
         /// <returns></returns>
+        /// <response code="204">Succesfully object deleted.</response>
+        /// <response code="404">Error: The object you are looking for is not found.</response>
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete]
-        public async Task<ActionResult<UserDeleteDTO>> DeleteCharacterAsync(int id)
+        public async Task<ActionResult<UserDeleteDTO>> DeleteUserAsync(int id)
         {
             // Instance of the domainUser objects.
             var domainUser = await _user.DeleteUserAsync(id);
 
             // Map UserDeleteDTO with domainUser.
-            _mapper.Map<UserDeleteDTO>(domainUser.Value);
+            var dtoUser = _mapper.Map<UserDeleteDTO>(domainUser.Value);
+
+            if (dtoUser == null)
+            {
+                return NotFound();
+            }
 
             return NoContent();
         }
