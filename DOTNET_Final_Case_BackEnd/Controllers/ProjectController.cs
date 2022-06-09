@@ -91,7 +91,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutProject(int id, ProjectUpdateDTO projectDto)
         {
-            //// Check if id equals id of the object
+            // Check if id equals id of the object
             //if (id != projectDto.ProjectId)
             //{
             //    return BadRequest();

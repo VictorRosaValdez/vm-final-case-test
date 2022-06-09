@@ -103,11 +103,19 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
                 return BadRequest();
             }
 
+            // int userId = _user.PutUserAsync(domainUser).Id;
+
             // Intance of the UserRepository
             UserRepository userRepository = new(); 
 
             // Instance of the domainUser objects.
             var domainUser = await _user.PutUserAsync(id, userDto);
+
+            // Check if the value is null.
+            if (domainUser == null)
+            {
+                return NotFound();
+            }
 
             // Map domainUser with UserReadDTO
             var dtoUser = _mapper.Map<UserUpdateDTO>(domainUser.Value);
@@ -119,6 +127,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
+
                 if (!userRepository.UserExists(dtoUser.UserId))
                 {
                     return NotFound();

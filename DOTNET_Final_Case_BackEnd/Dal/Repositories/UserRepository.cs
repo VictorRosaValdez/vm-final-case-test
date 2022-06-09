@@ -68,7 +68,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             // Check if the domainUser is null.
             if (domainUser == null)
             {
-                return domainUser;
+                return null;
             }
 
             // Update fields.
@@ -108,7 +108,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             if (domainUser == null)
             {
-                return domainUser;
+                return null;
             }
 
             _context.User.Remove(domainUser);
