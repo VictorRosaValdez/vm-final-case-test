@@ -1,34 +1,127 @@
 ﻿using DOTNET_Final_Case_BackEnd.DTOs.SkillDTO;
 using DOTNET_Final_Case_BackEnd.Interfaces;
+using DOTNET_Final_Case_BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 {
     public class SkillRepository : ISkillRepository
     {
-        public Task<ActionResult<SkillDeleteDTO>> DeleteSkillAsync(int id)
+        // Fields
+
+        // Variable for the DbContext.
+        private readonly ProjectsDbContext _context;
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public SkillRepository()
         {
-            throw new NotImplementedException();
         }
 
-        public Task<ActionResult<SkillReadDTO>> GetSkillAsync(int id)
+        /// <summary>
+        /// Constructor for the SkillRepository.
+        /// </summary>
+        /// <param name="context">Db context</param>
+        public SkillRepository(ProjectsDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<ActionResult<IEnumerable<SkillReadDTO>>> GetSkillsAsync()
+        /// <summary>
+        /// Get all skills.
+        /// </summary>
+        /// <returns>A list of skill objects.</returns>
+        public async Task<ActionResult<IEnumerable<Skill>>> GetSkillsAsync()
         {
-            throw new NotImplementedException();
+            // Assign it to the domain object.
+            var domainSkills = await _context.Skill.ToListAsync();
+
+            return domainSkills;
         }
 
-        public Task<ActionResult<SkillReadDTO>> PostSkillAsync(SkillCreateDTO skillDto)
+        /// <summary>
+        /// Get a skill by ID.
+        /// </summary>
+        /// <param name="id">Id of the skill</param>
+        /// <returns>An skill object.</returns>
+        public async Task<ActionResult<Skill>> GetSkillAsync(int id)
         {
-            throw new NotImplementedException();
+            // Assign it to the domain object.
+            var domainSkill = await _context.Skill.FindAsync(id);
+
+            return domainSkill;
         }
 
-        public Task<ActionResult<SkillUpdateDTO>> PutSkillAsync(int id, SkillUpdateDTO skillDto)
+        /// <summary>
+        /// Update an skill object.
+        /// </summary>
+        /// <param name="id">Id of the skill.</param>
+        /// <param name="skillDto">skillUpdateDTO object.</param>
+        /// <returns>An skill object.</returns>
+        public async Task<ActionResult<Skill>> PutSkillAsync(int id, SkillUpdateDTO skillDto)
         {
-            throw new NotImplementedException();
+            // Find the Id.
+            var domainSkill = _context.Skill.Find(id);
+
+            // Check if the domainSkill is null.
+            if (domainSkill == null)
+            {
+                return domainSkill;
+            }
+
+            // Update fields.
+            domainSkill.Name = skillDto.Name;
+
+            // Saving the update
+            await _context.SaveChangesAsync();
+
+            return domainSkill;
+        }
+
+        /// <summary>
+        /// Create a new skill object.
+        /// </summary>
+        /// <param name="skill">Skill object.</param>
+        /// <returns>The new skill object.</returns>
+        public async Task<ActionResult<Skill>> PostSkillAsync(Skill skill)
+        {
+            _context.Skill.Add(skill);
+            await _context.SaveChangesAsync();
+
+            return skill;
+        }
+
+        /// <summary>
+        /// Delete an skill object.
+        /// </summary>
+        /// <param name="id">Id of the skill object.</param>
+        /// <returns>The deleted object.</returns>
+        public async Task<ActionResult<Skill>> DeleteSkillAsync(int id)
+        {
+            // Find the Id.
+            var domainSkill = await _context.Skill.FindAsync(id);
+
+            if (domainSkill == null)
+            {
+                return domainSkill;
+            }
+
+            _context.Skill.Remove(domainSkill);
+            await _context.SaveChangesAsync();
+
+            return domainSkill;
+        }
+
+        /// <summary>
+        /// Check of an skill exists.
+        /// </summary>
+        /// <param name="id">Id of the skill.</param>
+        /// <returns></returns>
+        public bool SkillExists(int id)
+        {
+            return _context.Skill.Any(e => e.SkillId == id);
         }
     }
 }
