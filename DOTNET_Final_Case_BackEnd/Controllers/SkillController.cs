@@ -10,7 +10,7 @@ using System.Net.Mime;
 namespace DOTNET_Final_Case_BackEnd.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/skills")]
     [Produces(MediaTypeNames.Application.Json)]
     [Consumes(MediaTypeNames.Application.Json)]
     public class SkillController : ControllerBase
@@ -78,7 +78,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             return dtoSkill;
         }
 
-        // PUT: api/Skills/5
+        // PUT: api/skills/5
         /// <summary>
         /// Update a skill.
         /// </summary>
@@ -121,7 +121,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         }
 
 
-        // POST: api/Skill
+        // POST: api/skill
         /// <summary>
         /// Create a skill object.
         /// </summary>

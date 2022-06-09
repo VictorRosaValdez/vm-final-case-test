@@ -1,35 +1,127 @@
 ﻿using DOTNET_Final_Case_BackEnd.DTOs.MessageDTO;
 using DOTNET_Final_Case_BackEnd.Interfaces;
+using DOTNET_Final_Case_BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 {
     public class MessageRepository : IMessageRepository
     {
-    
-        public Task<ActionResult<MessageDeleteDTO>> DeleteMessageAsync(int id)
+        // Fields
+
+        // Variable for the DbContext.
+        private readonly ProjectsDbContext _context;
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public MessageRepository()
         {
-            throw new NotImplementedException();
         }
 
-        public Task<ActionResult<MessageReadDTO>> GetMessageAsync(int id)
+        /// <summary>
+        /// Constructor for the messageRepository.
+        /// </summary>
+        /// <param name="context">Db context</param>
+        public MessageRepository(ProjectsDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<ActionResult<IEnumerable<MessageReadDTO>>> GetMessagesAsync()
+        /// <summary>
+        /// Get all messages.
+        /// </summary>
+        /// <returns>A list of message objects.</returns>
+        public async Task<ActionResult<IEnumerable<Message>>> GetMessagesAsync()
         {
-            throw new NotImplementedException();
+            // Assign it to the domain object.
+            var domainMessages = await _context.Message.ToListAsync();
+
+            return domainMessages;
         }
 
-        public Task<ActionResult<MessageReadDTO>> PostMessageAsync(MessageCreateDTO messageDto)
+        /// <summary>
+        /// Get a message by ID.
+        /// </summary>
+        /// <param name="id">Id of the message</param>
+        /// <returns>An message object.</returns>
+        public async Task<ActionResult<Message>> GetMessageAsync(int id)
         {
-            throw new NotImplementedException();
+            // Assign it to the domain object.
+            var domainMessage = await _context.Message.FindAsync(id);
+
+            return domainMessage;
         }
 
-        public Task<ActionResult<MessageUpdateDTO>> PutMessageAsync(int id, MessageUpdateDTO messageDto)
+        /// <summary>
+        /// Update an message object.
+        /// </summary>
+        /// <param name="id">Id of the message.</param>
+        /// <param name="messageDto">MessageUpdateDTO object.</param>
+        /// <returns>An message object.</returns>
+        public async Task<ActionResult<Message>> PutMessageAsync(int id, MessageUpdateDTO messageDto)
         {
-            throw new NotImplementedException();
+            // Find the Id.
+            var domainMessage = _context.Message.Find(id);
+
+            // Check if the domainMessage is null.
+            if (domainMessage == null)
+            {
+                return domainMessage;
+            }
+
+            // Update fields.
+            domainMessage.Description = messageDto.Description;
+
+            // Saving the update
+            await _context.SaveChangesAsync();
+
+            return domainMessage;
+        }
+
+        /// <summary>
+        /// Create a new message object.
+        /// </summary>
+        /// <param name="message">message object.</param>
+        /// <returns>The new message object.</returns>
+        public async Task<ActionResult<Message>> PostMessageAsync(Message message)
+        {
+            _context.Message.Add(message);
+            await _context.SaveChangesAsync();
+
+            return message;
+        }
+
+        /// <summary>
+        /// Delete an message object.
+        /// </summary>
+        /// <param name="id">Id of the message object.</param>
+        /// <returns>The deleted object.</returns>
+        public async Task<ActionResult<Message>> DeleteMessageAsync(int id)
+        {
+            // Find the Id.
+            var domainMessage = await _context.Message.FindAsync(id);
+
+            if (domainMessage == null)
+            {
+                return domainMessage;
+            }
+
+            _context.Message.Remove(domainMessage);
+            await _context.SaveChangesAsync();
+
+            return domainMessage;
+        }
+
+        /// <summary>
+        /// Check of an message exists.
+        /// </summary>
+        /// <param name="id">Id of the message.</param>
+        /// <returns></returns>
+        public bool MessageExists(int id)
+        {
+            return _context.Message.Any(e => e.MessageId == id);
         }
     }
 }
