@@ -1,0 +1,16 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DOTNET_Final_Case_BackEnd
+build_property.RootNamespace = DOTNET_Final_Case_BackEnd
+build_property.ProjectDir = C:\Users\dorin\Desktop\noroff-final-case-backend\DOTNET_Final_Case\DOTNET_Final_Case_BackEnd\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\dorin\Desktop\noroff-final-case-backend\DOTNET_Final_Case\DOTNET_Final_Case_BackEnd
+build_property._RazorSourceGeneratorDebug = 

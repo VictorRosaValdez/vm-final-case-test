@@ -10,7 +10,7 @@ using System.Net.Mime;
 namespace DOTNET_Final_Case_BackEnd.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/users")]
     [Produces(MediaTypeNames.Application.Json)]
     [Consumes(MediaTypeNames.Application.Json)]
     public class UserController : ControllerBase
@@ -92,18 +92,24 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         /// <response code="404">Error: The object you are looking for is not found.</response>
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
         public async Task<ActionResult<UserUpdateDTO>> PutUser(int id, UserUpdateDTO userDto)
         {
-            // Intance of the UserRepository
+            // Check if id equals id of the object
+            if (id != userDto.UserId)
+            {
+                return BadRequest();
+            }
 
+            // Intance of the UserRepository
             UserRepository userRepository = new(); 
 
             // Instance of the domainUser objects.
             var domainUser = await _user.PutUserAsync(id, userDto);
 
-            // Map domainProject with UserReadDTO
+            // Map domainUser with UserReadDTO
             var dtoUser = _mapper.Map<UserUpdateDTO>(domainUser.Value);
 
             try
@@ -144,7 +150,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             // New user object.
             await _user.PostUserAsync(domainUser);
 
-            // Get Movie Id for new movie object.
+            // Get User Id for new user object.
             int userId = _user.PostUserAsync(domainUser).Id;
 
             // Returning the new user.
@@ -166,10 +172,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             // Instance of the domainUser objects.
             var domainUser = await _user.DeleteUserAsync(id);
 
-            // Map UserDeleteDTO with domainUser.
-            var dtoUser = _mapper.Map<UserDeleteDTO>(domainUser.Value);
-
-            if (dtoUser == null)
+            if (domainUser == null)
             {
                 return NotFound();
             }
