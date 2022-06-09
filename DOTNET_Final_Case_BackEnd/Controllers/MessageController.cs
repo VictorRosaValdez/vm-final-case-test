@@ -161,10 +161,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             // Instance of the domainMessage objects.
             var domainMessage = await _message.DeleteMessageAsync(id);
 
-            // Map messageDeleteDTO with domainMessage.
-            var dtoMessage = _mapper.Map<MessageDeleteDTO>(domainMessage.Value);
-
-            if (dtoMessage == null)
+            if (domainMessage == null)
             {
                 return NotFound();
             }
