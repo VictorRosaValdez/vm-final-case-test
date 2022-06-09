@@ -53,11 +53,11 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         }
 
         /// <summary>
-        /// Get a user by ID.
+        /// Get an user by ID.
         /// </summary>
         /// <param name="id">Id of the user.</param>
-        /// <returns>A userDto object.</returns>
-        /// <response code="200">Succesfully returns a user object.</response>
+        /// <returns>An userDto object.</returns>
+        /// <response code="200">Succesfully returns an user object.</response>
         /// <response code="400">Error: Response with this is a bad request.</response>
         /// <response code="404">Error: The object you are looking for is not found.</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -83,7 +83,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
 
         // PUT: api/Users/5
         /// <summary>
-        /// Update a user.
+        /// Update an user.
         /// </summary>
         /// <param name="id">Id of the user</param>
         /// <param name="userDto">UserDto</param>
@@ -128,7 +128,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
 
         // POST: api/User
         /// <summary>
-        /// Create a user object.
+        /// Create an user object.
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns>The created userDto object.</returns>
@@ -152,7 +152,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         }
 
         /// <summary>
-        /// Delete a user by Id.
+        /// Delete an user by Id.
         /// </summary>
         /// <param name="id">Id of the userDto object.</param>
         /// <returns></returns>
