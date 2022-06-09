@@ -10,7 +10,7 @@ using System.Net.Mime;
 namespace DOTNET_Final_Case_BackEnd.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/messages")]
     [Produces(MediaTypeNames.Application.Json)]
     [Consumes(MediaTypeNames.Application.Json)]
     public class MessageController : ControllerBase
