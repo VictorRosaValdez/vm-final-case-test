@@ -93,23 +93,29 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutProject(int id, ProjectUpdateDTO projectDto)
         {
+            // Check if id equals id of the object
             if (id != projectDto.ProjectId)
             {
                 return BadRequest();
             }
 
-            // Map ProjectUpdateDTO to domain object
-            Project domainProject = _mapper.Map<Project>(projectDto);
-            _context.Entry(domainProject).State = EntityState.Modified;
+            // Instance of the ProjectRepository
+            ProjectRepository projectRepository = new();
+
+            // Instance of the domainProject objects
+            var domainProject = await _project.PutProjectAsync(id, projectDto);
+
+            // Map domainProject to ProjectUpdateDTO
+            var dtoProject = _mapper.Map<ProjectUpdateDTO>(domainProject.Value);
 
             try
             {
-                await _context.SaveChangesAsync(); // store domainobject in database
+                await _project.PutProjectAsync(id, projectDto);
 
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProjectExists(id))
+                if (!projectRepository.ProjectExists(dtoProject.ProjectId))
                 {
                     return NotFound();
                 }
@@ -134,21 +140,16 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         public async Task<ActionResult<ProjectCreateDTO>> PostUser(ProjectCreateDTO projectDto)
         {
             // Map ProjectCreateDTO to domain object
-            Project domainProject = _mapper.Map<Project>(projectDto);
+            var domainProject = _mapper.Map<Project>(projectDto);
 
-            // Add domain object to database and save changes
+            // New project object
             await _project.PostProjectAsync(domainProject);
 
-            // Map domain object to ProjectReadDTO
-            ProjectReadDTO newProjectDto = _mapper.Map<ProjectReadDTO>(domainProject);
+            // Get project id for new project object.
+            int projectId = _project.PostProjectAsync(domainProject).Id;
 
-            // Return the new project
-            return CreatedAtAction("GetProject", new { id = newProjectDto.ProjectId }, newProjectDto);
-        }
-
-        private bool ProjectExists(int id)
-        {
-            return (_context.Project?.Any(e => e.ProjectId == id)).GetValueOrDefault();
+            // Returning the new user.
+            return CreatedAtAction("GetProject", new { id = projectId }, projectDto);
         }
 
         /// <summary>

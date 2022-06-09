@@ -13,6 +13,14 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
         // Variable for the DbContext.
         private readonly ProjectsDbContext _context;
 
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public ProjectRepository()
+        {
+        }
+
         /// <summary>
         /// Constructor for the ProjectRepository
         /// </summary>
@@ -49,13 +57,50 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
         }
 
         /// <summary>
+        /// Update a project in the database.
+        /// </summary>
+        /// <param name="id">The id of the project.</param>
+        /// <param name="project">The new project object.</param>
+        /// <returns>The updated project object.</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<ActionResult<Project>> PutProjectAsync(int id, ProjectUpdateDTO projectDto)
+        {
+            // Find by Id.
+            var domainProject = _context.Project.Find(id);
+
+            // Check if the domainUser is null.
+            if (domainProject == null)
+            {
+                return null;
+            }
+
+            // Update fields
+            domainProject.Title = projectDto.Title;
+            domainProject.Description = projectDto.Description;
+            domainProject.Theme = projectDto.Theme;
+            domainProject.Industry = projectDto.Industry;
+            domainProject.Link = projectDto.Link;
+            domainProject.Screen = projectDto.Screen;
+            domainProject.Photo = projectDto.Photo;
+            domainProject.Progress = projectDto.Progress;
+
+            // Saving the update
+            await _context.SaveChangesAsync();
+
+            return domainProject;
+        }
+
+        /// <summary>
         /// Adds a new project domain object to the database.
         /// </summary>
         /// <param name="domainProject">Project object.</param>
-        public async Task PostProjectAsync(Project domainProject)
+        /// <returns>The new project object.</returns>
+        public async Task<ActionResult<Project>> PostProjectAsync(Project project)
         {
-            _context.Project.Add(domainProject);
+            _context.Project.Add(project);
             await _context.SaveChangesAsync();
+
+            return project;
         }
 
         /// <summary>
@@ -78,5 +123,17 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             return domainProject;
         }
+
+        /// <summary>
+        /// Checks if a project exists.
+        /// </summary>
+        /// <param name="id">Id of the project.</param>
+        /// <returns>A boolean value.</returns>
+        public bool ProjectExists(int id)
+        {
+            return (_context.Project?.Any(e => e.ProjectId == id)).GetValueOrDefault();
+        }
+
+        
     }
 }
