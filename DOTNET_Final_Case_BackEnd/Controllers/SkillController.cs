@@ -161,10 +161,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             // Instance of the domainSkill objects.
             var domainSkill = await _skill.DeleteSkillAsync(id);
 
-            // Map SkillDeleteDTO with domainSkill.
-            var dtoSkill = _mapper.Map<SkillDeleteDTO>(domainSkill.Value);
-
-            if (dtoSkill == null)
+            if (domainSkill == null)
             {
                 return NotFound();
             }
