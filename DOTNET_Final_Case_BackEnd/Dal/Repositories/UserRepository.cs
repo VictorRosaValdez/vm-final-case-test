@@ -27,7 +27,6 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
         public UserRepository(ProjectsDbContext context)
         {
             _context = context;
-
         }
 
         /// <summary>
@@ -40,7 +39,6 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
                 var domainUsers = await _context.User.ToListAsync();
 
                 return domainUsers;
-            
         }
 
         /// <summary>
@@ -96,7 +94,6 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             await _context.SaveChangesAsync();
 
             return user;
-
         }
 
         /// <summary>
