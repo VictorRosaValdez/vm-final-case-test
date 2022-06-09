@@ -22,8 +22,8 @@ namespace DOTNET_Final_Case_BackEnd.Interfaces
         /// <summary>
         /// Abstract method to create a skill.
         /// </summary>
-        /// <param name="skillDto">SkillDto object.</param>
-        /// <returns>The new skillDto object</returns>
+        /// <param name="skill">Skill object.</param>
+        /// <returns>The new skill object</returns>
         Task<ActionResult<Skill>> PostSkillAsync(Skill skill);
 
         /// <summary>

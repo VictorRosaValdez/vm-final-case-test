@@ -21,7 +21,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
         }
 
         /// <summary>
-        /// Constructor for the ProjectRepository.
+        /// Constructor for the SkillRepository.
         /// </summary>
         /// <param name="context">Db context</param>
         public SkillRepository(ProjectsDbContext context)

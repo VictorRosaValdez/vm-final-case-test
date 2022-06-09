@@ -22,9 +22,9 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// Constructor of the project.
+        /// Constructor of the skill.
         /// </summary>
-        /// <param name="project"></param>
+        /// <param name="skill"></param>
         public SkillController(ISkillRepository skill, IMapper mapper)
         {
 
