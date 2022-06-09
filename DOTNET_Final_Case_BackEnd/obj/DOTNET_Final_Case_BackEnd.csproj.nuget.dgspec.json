@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Development\\Experis Development\\Case\\BACKEND\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj": {}
+    "C:\\Users\\dorin\\Desktop\\noroff-final-case-backend\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj": {}
   },
   "projects": {
-    "D:\\Development\\Experis Development\\Case\\BACKEND\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj": {
+    "C:\\Users\\dorin\\Desktop\\noroff-final-case-backend\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Experis Development\\Case\\BACKEND\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\dorin\\Desktop\\noroff-final-case-backend\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
         "projectName": "DOTNET_Final_Case_BackEnd",
-        "projectPath": "D:\\Development\\Experis Development\\Case\\BACKEND\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
-        "packagesPath": "C:\\Users\\leroy\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Experis Development\\Case\\BACKEND\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\obj\\",
+        "projectPath": "C:\\Users\\dorin\\Desktop\\noroff-final-case-backend\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
+        "packagesPath": "C:\\Users\\dorin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dorin\\Desktop\\noroff-final-case-backend\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\leroy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dorin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
