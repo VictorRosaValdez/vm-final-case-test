@@ -40,7 +40,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         /// <returns>A list of message objects.</returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MessageReadDTO>>> Getmessages()
+        public async Task<ActionResult<IEnumerable<MessageReadDTO>>> GetMessages()
         {
             // Instance of the domainMessages objects.
             var domainMessages = await _message.GetMessagesAsync();
@@ -91,7 +91,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
-        public async Task<ActionResult<MessageUpdateDTO>> Putmessage(int id, MessageUpdateDTO messageDto)
+        public async Task<ActionResult<MessageUpdateDTO>> PutMessage(int id, MessageUpdateDTO messageDto)
         {
             // Intance of the messageRepository
             MessageRepository messageRepository = new();
@@ -108,7 +108,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!messageRepository.messageExists(dtoMessage.MessageId))
+                if (!messageRepository.MessageExists(dtoMessage.MessageId))
                 {
                     return NotFound();
                 }
@@ -121,7 +121,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         }
 
 
-        // POST: api/message
+        // POST: api/messages
         /// <summary>
         /// Create a message object.
         /// </summary>
@@ -131,9 +131,9 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
-        public async Task<ActionResult<MessageReadDTO>> Postmessage(MessageCreateDTO messageDto)
+        public async Task<ActionResult<MessageReadDTO>> PostMessage(MessageCreateDTO messageDto)
         {
-            // Map domainMessage with messageCreateDTO
+            // Map domainMessage with MessageCreateDTO
             var domainMessage = _mapper.Map<Message>(messageDto);
 
             // New message object.
@@ -143,7 +143,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             int messageId = _message.PostMessageAsync(domainMessage).Id;
 
             // Returning the new message.
-            return CreatedAtAction("Getmessage", new { id = messageId }, messageDto);
+            return CreatedAtAction("GetMessage", new { id = messageId }, messageDto);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete]
-        public async Task<ActionResult<MessageDeleteDTO>> DeletemessageAsync(int id)
+        public async Task<ActionResult<MessageDeleteDTO>> DeleteMessageAsync(int id)
         {
             // Instance of the domainMessage objects.
             var domainMessage = await _message.DeleteMessageAsync(id);
