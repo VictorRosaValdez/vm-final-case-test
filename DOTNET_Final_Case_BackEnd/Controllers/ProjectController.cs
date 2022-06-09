@@ -15,7 +15,6 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
     [Consumes(MediaTypeNames.Application.Json)]
     public class ProjectController : ControllerBase
     {
-        private readonly ProjectsDbContext _context;
         private readonly IProjectRepository _project;
         private readonly IMapper _mapper;
 
@@ -23,9 +22,8 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         /// Constructor of the project.
         /// </summary>
         /// <param name="project"></param>
-        public ProjectController(ProjectsDbContext context, IProjectRepository project, IMapper mapper)
+        public ProjectController(IProjectRepository project, IMapper mapper)
         {
-            _context = context;
             _project = project;
             _mapper = mapper;
         }
