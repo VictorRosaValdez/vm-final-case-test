@@ -68,7 +68,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             // Check if the domainUser is null.
             if (domainUser == null)
             {
-                return domainUser;
+                return null;
             }
 
             // Update fields.
@@ -108,7 +108,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             if (domainUser == null)
             {
-                return domainUser;
+                return null;
             }
 
             _context.User.Remove(domainUser);
@@ -117,14 +117,5 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainUser;
         }
 
-        /// <summary>
-        /// Check of an user exists.
-        /// </summary>
-        /// <param name="id">Id of the user.</param>
-        /// <returns></returns>
-        public bool UserExists(int id)
-        {
-            return _context.User.Any(e => e.UserId == id);
-        }
     }
 }

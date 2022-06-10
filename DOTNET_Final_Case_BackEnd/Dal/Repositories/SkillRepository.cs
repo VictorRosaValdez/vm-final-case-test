@@ -68,7 +68,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             // Check if the domainSkill is null.
             if (domainSkill == null)
             {
-                return domainSkill;
+                return null;
             }
 
             // Update fields.
@@ -105,7 +105,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             if (domainSkill == null)
             {
-                return domainSkill;
+                return null;
             }
 
             _context.Skill.Remove(domainSkill);
@@ -114,14 +114,5 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainSkill;
         }
 
-        /// <summary>
-        /// Check of an skill exists.
-        /// </summary>
-        /// <param name="id">Id of the skill.</param>
-        /// <returns></returns>
-        public bool SkillExists(int id)
-        {
-            return _context.Skill.Any(e => e.SkillId == id);
-        }
     }
 }

@@ -93,30 +93,34 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<MessageUpdateDTO>> PutMessage(int id, MessageUpdateDTO messageDto)
         {
-            // Intance of the messageRepository
-            MessageRepository messageRepository = new();
+            // Check if id equals id of the object.
+            if (id != messageDto.MessageId)
+            {
+                return BadRequest();
+            }
 
             // Instance of the domainMessage objects.
             var domainMessage = await _message.PutMessageAsync(id, messageDto);
 
+            // Check if the value is null.
+            if (domainMessage == null)
+            {
+                return NotFound();
+            }
+
             // Map domainProject with messageReadDTO
-            var dtoMessage = _mapper.Map<MessageUpdateDTO>(domainMessage.Value);
+            _mapper.Map<MessageUpdateDTO>(domainMessage.Value);
 
             try
             {
                 await _message.PutMessageAsync(id, messageDto);
             }
+
             catch (DbUpdateConcurrencyException)
             {
-                if (!messageRepository.MessageExists(dtoMessage.MessageId))
-                {
-                    return NotFound();
-                }
-                else
-                {
                     throw;
-                }
             }
+
             return NoContent();
         }
 

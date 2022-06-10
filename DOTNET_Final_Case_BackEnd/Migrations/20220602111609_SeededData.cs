@@ -10,12 +10,12 @@ namespace DOTNET_Final_Case_BackEnd.Migrations
         {
             migrationBuilder.InsertData(
                 table: "Project",
-                columns: new[] { "ProjectId", "Description", "Industry", "Link", "Photo", "Progress", "Screen", "Theme", "Title" },
+                columns: new[] { "ProjectId", "Description", "Industry", "Link", "Photo", "Progress", "Theme", "Title" },
                 values: new object[,]
                 {
-                    { 1, ".NET is an open source platform", "Programming", null, null, null, null, "IT", "The world of .NET" },
-                    { 2, "Java is an open source programming language", "Programming", null, null, null, null, "IT", "Java" },
-                    { 3, "C# an open source programming language", "Programming", null, null, null, null, "IT", "C#" }
+                    { 1, ".NET is an open source platform", "Programming", null, null, null, "IT", "The world of .NET" },
+                    { 2, "Java is an open source programming language", "Programming", null, null, null, "IT", "Java" },
+                    { 3, "C# an open source programming language", "Programming", null, null, null, "IT", "C#" }
                 });
 
             migrationBuilder.InsertData(

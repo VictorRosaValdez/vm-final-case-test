@@ -93,30 +93,34 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<SkillUpdateDTO>> PutSkill(int id, SkillUpdateDTO skillDto)
         {
-            // Intance of the SkillRepository
-            SkillRepository skillRepository = new();
+            // Check if id equals id of the object.
+            if (id != skillDto.SkillId)
+            {
+                return BadRequest();
+            }
 
             // Instance of the domainSkill objects.
             var domainSkill = await _skill.PutSkillAsync(id, skillDto);
 
+            // Check if the value is null.
+            if (domainSkill == null)
+            {
+                return NotFound();
+            }
+
             // Map domainProject with SkillReadDTO
-            var dtoSkill = _mapper.Map<SkillUpdateDTO>(domainSkill.Value);
+            _mapper.Map<SkillUpdateDTO>(domainSkill.Value);
 
             try
             {
                 await _skill.PutSkillAsync(id, skillDto);
             }
+
             catch (DbUpdateConcurrencyException)
             {
-                if (!skillRepository.SkillExists(dtoSkill.SkillId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                   throw;
             }
+
             return NoContent();
         }
 
