@@ -117,14 +117,5 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainUser;
         }
 
-        /// <summary>
-        /// Check of an user exists.
-        /// </summary>
-        /// <param name="id">Id of the user.</param>
-        /// <returns></returns>
-        public bool UserExists(int id)
-        {
-            return _context.User.Any(e => e.UserId == id);
-        }
     }
 }

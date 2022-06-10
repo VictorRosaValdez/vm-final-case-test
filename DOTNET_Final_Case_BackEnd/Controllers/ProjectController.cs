@@ -91,20 +91,23 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutProject(int id, ProjectUpdateDTO projectDto)
         {
-            // Check if id equals id of the object
-            //if (id != projectDto.ProjectId)
-            //{
-            //    return BadRequest();
-            //}
-
-            // Instance of the ProjectRepository
-            ProjectRepository projectRepository = new();
+            // Check if id equals id of the object.
+            if (id != projectDto.ProjectId)
+            {
+                return BadRequest();
+            }
 
             // Instance of the domainProject objects
             var domainProject = await _project.PutProjectAsync(id, projectDto);
 
+            // Check if the value is null.
+            if (domainProject == null)
+            {
+                return NotFound();
+            }
+
             // Map domainProject to ProjectUpdateDTO
-            var dtoProject = _mapper.Map<ProjectUpdateDTO>(domainProject.Value);
+            _mapper.Map<ProjectUpdateDTO>(domainProject.Value);
 
             try
             {
@@ -113,14 +116,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!projectRepository.ProjectExists(dtoProject.ProjectId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                 throw;
             }
 
             return NoContent();

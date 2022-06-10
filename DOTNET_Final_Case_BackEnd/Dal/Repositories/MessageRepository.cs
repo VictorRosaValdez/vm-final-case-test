@@ -68,7 +68,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             // Check if the domainMessage is null.
             if (domainMessage == null)
             {
-                return domainMessage;
+                return null;
             }
 
             // Update fields.
@@ -105,7 +105,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             if (domainMessage == null)
             {
-                return domainMessage;
+                return null;
             }
 
             _context.Message.Remove(domainMessage);
@@ -114,14 +114,5 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             return domainMessage;
         }
 
-        /// <summary>
-        /// Check of an message exists.
-        /// </summary>
-        /// <param name="id">Id of the message.</param>
-        /// <returns></returns>
-        public bool MessageExists(int id)
-        {
-            return _context.Message.Any(e => e.MessageId == id);
-        }
     }
 }

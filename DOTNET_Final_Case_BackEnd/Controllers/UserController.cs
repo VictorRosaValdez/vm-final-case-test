@@ -97,16 +97,11 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<UserUpdateDTO>> PutUser(int id, UserUpdateDTO userDto)
         {
-            // Check if id equals id of the object
+            // Check if id equals id of the object.
             if (id != userDto.UserId)
             {
                 return BadRequest();
             }
-
-            // int userId = _user.PutUserAsync(domainUser).Id;
-
-            // Intance of the UserRepository
-            UserRepository userRepository = new(); 
 
             // Instance of the domainUser objects.
             var domainUser = await _user.PutUserAsync(id, userDto);
@@ -118,7 +113,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             }
 
             // Map domainUser with UserReadDTO
-            var dtoUser = _mapper.Map<UserUpdateDTO>(domainUser.Value);
+            _mapper.Map<UserUpdateDTO>(domainUser.Value);
 
             try
             {
@@ -126,16 +121,9 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
 
             }
             catch (DbUpdateConcurrencyException)
-            {
 
-                if (!userRepository.UserExists(dtoUser.UserId))
-                {
-                    return NotFound();
-                }
-                else
-                {
+            {
                     throw;
-                }
             }
 
             return NoContent();

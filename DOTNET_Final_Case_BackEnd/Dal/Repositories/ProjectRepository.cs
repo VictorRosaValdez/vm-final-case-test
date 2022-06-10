@@ -80,7 +80,6 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
             domainProject.Theme = projectDto.Theme;
             domainProject.Industry = projectDto.Industry;
             domainProject.Link = projectDto.Link;
-            domainProject.Screen = projectDto.Screen;
             domainProject.Photo = projectDto.Photo;
             domainProject.Progress = projectDto.Progress;
 
@@ -115,7 +114,7 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             if (domainProject == null)
             {
-                return domainProject;
+                return null;
             }
 
             _context.Project.Remove(domainProject);
@@ -123,17 +122,6 @@ namespace DOTNET_Final_Case_BackEnd.Dal.Repositories
 
             return domainProject;
         }
-
-        /// <summary>
-        /// Checks if a project exists.
-        /// </summary>
-        /// <param name="id">Id of the project.</param>
-        /// <returns>A boolean value.</returns>
-        public bool ProjectExists(int id)
-        {
-            return (_context.Project?.Any(e => e.ProjectId == id)).GetValueOrDefault();
-        }
-
         
     }
 }
