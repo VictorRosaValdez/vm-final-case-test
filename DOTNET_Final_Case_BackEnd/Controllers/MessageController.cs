@@ -108,9 +108,6 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
                 return NotFound();
             }
 
-            // Map domainProject with messageReadDTO
-            _mapper.Map<MessageUpdateDTO>(domainMessage.Value);
-
             try
             {
                 await _message.PutMessageAsync(id, messageDto);

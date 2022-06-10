@@ -106,9 +106,6 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
                 return NotFound();
             }
 
-            // Map domainProject to ProjectUpdateDTO
-            _mapper.Map<ProjectUpdateDTO>(domainProject.Value);
-
             try
             {
                 await _project.PutProjectAsync(id, projectDto);

@@ -112,9 +112,6 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
                 return NotFound();
             }
 
-            // Map domainUser with UserReadDTO
-            _mapper.Map<UserUpdateDTO>(domainUser.Value);
-
             try
             {
                 await _user.PutUserAsync(id, userDto);
