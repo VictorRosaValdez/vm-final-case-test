@@ -108,9 +108,6 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
                 return NotFound();
             }
 
-            // Map domainProject with SkillReadDTO
-            _mapper.Map<SkillUpdateDTO>(domainSkill.Value);
-
             try
             {
                 await _skill.PutSkillAsync(id, skillDto);
