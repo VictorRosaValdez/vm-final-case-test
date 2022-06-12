@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xcmeIFFkyb7RYX0t5xJZf2f9eJwSX9XXc8pMOupD03x9uM4Jll6ey9YRl+W6HJC+hc/NoqGEj/sH53xUp78tGA==",
+  "dgSpecHash": "eO47nx+jUncRK+HiwpM1ftP4uhNgyDLm9Zd4+m9b1Pzqo1a+bFpM0qhiOj9VWBIL6zXaftsdjjNlqCBZ4r7fuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case - test\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd_Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

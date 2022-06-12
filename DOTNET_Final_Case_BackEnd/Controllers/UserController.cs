@@ -10,7 +10,7 @@ using System.Net.Mime;
 namespace DOTNET_Final_Case_BackEnd.Controllers
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("/users")]
     [Produces(MediaTypeNames.Application.Json)]
     [Consumes(MediaTypeNames.Application.Json)]
     public class UserController : ControllerBase
@@ -102,7 +102,7 @@ namespace DOTNET_Final_Case_BackEnd.Controllers
             {
                 return BadRequest();
             }
-
+            //
             // Instance of the domainUser objects.
             var domainUser = await _user.PutUserAsync(id, userDto);
 

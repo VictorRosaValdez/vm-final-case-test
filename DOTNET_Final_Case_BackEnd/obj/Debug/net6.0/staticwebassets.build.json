@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "F6tK3pc4yeeU+sTx9q2xR4tVZIiWUzzUbC5FvAECA4w=",
-  "Source": "DOTNET_Final_Case_BackEnd",
-  "BasePath": "_content/DOTNET_Final_Case_BackEnd",
+  "Hash": "ZbqhbZOWpxwStTZxd734IJJeMpkCWFT/tItJBXRajow=",
+  "Source": "DOTNET_Final_Case_BackEnd_Test",
+  "BasePath": "_content/DOTNET_Final_Case_BackEnd_Test",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

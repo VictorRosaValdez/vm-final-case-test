@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DOTNET_Final_Case_BackEnd.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

@@ -9723,11 +9723,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
-      "projectName": "DOTNET_Final_Case_BackEnd",
-      "projectPath": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case - test\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd_Test.csproj",
+      "projectName": "DOTNET_Final_Case_BackEnd_Test",
+      "projectPath": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case - test\\DOTNET_Final_Case_BackEnd\\DOTNET_Final_Case_BackEnd_Test.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case\\DOTNET_Final_Case_BackEnd\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Documents\\Traineeship.NET\\FinalCase\\DOTNET_Final_Case - test\\DOTNET_Final_Case_BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
